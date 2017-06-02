@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <title>maps</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="script.js" type="text/javascript"></script>
+    <style>
+      #map {
+        height: 400px;
+        width: 100%;
+       }
+	   #staticmap {
+		padding-top:10px;
+       }
+	   .btn {
+		display: inline-block;
+		font-family: "Roboto";
+		font-weight: 300;
+		font-size: 0.9vw;
+		background: #a5acb7;
+		color: #fff;
+		height: 25px;
+		text-align: center;
+		line-height: 22px;
+		margin-top: 10px;
+		padding: 10 60px;
+		border-radius: 1px;
+}
+    </style>
+  </head>
+  <body ng-app="myApp">
+    <div ng-controller="mapsController">
+	<button onclick="window.location='http://localhost:3000/stripe.html'" class="btn">Stripe Subscription</button>
+	<button onclick="window.location='http://localhost:3000/restdb.html'" class="btn">See recipe</button>
+    <h3>Google maps SDK</h3>
+    <h3>Change location</h3>
+	<form name="myForm" >
+		Latitude: <input type="text" name="lat">
+		Longitude: <input type="text" name="lng">	
+	</form>
+	<input type="submit" onclick="initMapUpdate()" class="btn" value="Load map">
+
+    <script>
+      function initMap() {
+        var antwerpen = {lat: 51.228197, lng: 4.422751};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: antwerpen
+        });
+      }
+	  function initMapUpdate() {
+	  var x = document.forms["myForm"]["lat"].value;
+	  var a = parseFloat(x);
+	  var y = document.forms["myForm"]["lng"].value;
+	  console.log(a);
+	  var b = parseFloat(y);
+        var locatie = {lat: a, lng: b};
+		console.log(locatie);
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: locatie
+        });
+        var marker = new google.maps.Marker({
+          position: locatie,
+          map: map
+        });
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAeKRuEXhwAJuZoKYgEie6xqo6sErmci3Y&callback=initMap">
+    </script>
+	<h3>static google maps http</h3>
+	<div id="map"></div>
+	
+	<div id="staticmap">
+		<h3>static google maps http</h3>
+		<img  ng-src="{{imageurl}}" ></div>
+	</div>
+  </body>
+</html>

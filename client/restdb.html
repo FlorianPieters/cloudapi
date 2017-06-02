@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stripe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"> </script>
+	<script src="script.js" type="text/javascript"></script>
+	
+	<style>
+	   .btn {
+			display: inline-block;
+			font-family: "Roboto";
+			font-weight: 300;
+			font-size: 0.9vw;
+			background: #a5acb7;
+			color: #fff;
+			height: 25px;
+			text-align: center;
+			line-height: 22px;
+			margin-top: 10px;
+			padding: 10 60px;
+			border-radius: 1px;
+		}
+ </style>
+	
+  </head>
+  <body ng-app="myApp">
+  
+	<button onclick="window.location='http://localhost:3000/map.html'" class="btn">Google Maps</button>
+	<button onclick="window.location='http://localhost:3000/stripe.html'" class="btn">Stripe Subscription</button>
+	
+    <div ng-controller="dbController">
+    <h1>Load recipes</h1>
+
+	<button type="button" ng-click="loaddb()" class="btn">Subscribe</button>
+        
+      </ul>
+    </div>
+  </body>
+</html>
